@@ -9,6 +9,26 @@
  */
 var app = angular.module('camperNewsApp');
 
+app.directive('errSrc', function() {
+  return {
+    link: function(scope, element, attrs) {
+      element.bind('error', function() {
+        if (attrs.src != attrs.errSrc) {
+          attrs.$set('src', attrs.errSrc);
+        }
+      });
+    }
+  }
+});
+
+app.controller('MainCtrl', ['$scope', '$http', function($scope, $http) {
+    $scope.allNews = [];
+
+    $http.get('https://api-https.herokuapp.com/freecodecamp/news/hot')
+        .then(function(res) {
+            $scope.allNews = res.data;
+        });
+}]);
 
 app.filter('upVotesLength', function(){
     return function (argument) {
@@ -22,13 +42,3 @@ app.filter('formattedTime', function(){
         return moment.unix(correctTime).format('LLL');
     }
 });
-
-app.controller('MainCtrl', ['$scope', '$http', function($scope, $http) {
-    $scope.allNews = [];
-    $scope.image = "../images/loading.gif";
-
-    $http.get('http://www.freecodecamp.com/news/hot')
-        .then(function(res) {
-            $scope.allNews = res.data;
-        });
-}]);

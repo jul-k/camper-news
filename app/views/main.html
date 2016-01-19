@@ -1,11 +1,11 @@
 <div class="row">
-  <div class="col-xs-6 col-sm-4 col-md-3" ng-repeat="news in allNews">
+  <div class="item" ng-repeat="news in allNews | orderBy:'-timePosted'">
     <div class="thumbnail">
-      <a ng-href="{{news.link}}" target="_blank"><img ng-src="{{news.image}}" alt="..."></a>
+      <a ng-href="{{news.link}}" target="_blank"><img ng-src="{{news.image ? news.image : '../images/cat-programmer.jpg'}}" err-src="../images/cat-programmer-2.jpg"></a>
       <div class="caption">
         <a ng-href="{{news.link}}" target="_blank">{{news.headline}}</a>
         <p> {{news.upVotes | upVotesLength}} <span class="glyphicon glyphicon-heart" aria-hidden="true"></span></p>
-        <p style="font-weight: bold;">{{news.timePosted | formattedTime}}</p>
+        <p>{{news.timePosted | formattedTime}}</p>
       </div>
     </div>
   </div>
