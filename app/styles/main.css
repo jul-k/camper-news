@@ -51,3 +51,33 @@ p {
 .glyphicon-heart {
     color: #f00;
 }
+
+@media screen and (max-width: 1260px) {
+    .github-corner {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 1199px) {
+    .github-corner {
+        display: inline;
+    }
+}
+
+@media screen and (max-width: 1054px) {
+    .github-corner {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .github-corner {
+        display: inline;
+    }
+}
+
+@media screen and (max-width: 835px) {
+    .github-corner {
+        display: none;
+    }
+}
